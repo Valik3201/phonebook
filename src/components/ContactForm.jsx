@@ -1,43 +1,21 @@
 import { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-// Import addContact operation and selectContacts selector from Redux
 import { addContact } from '../redux/operations/operations';
 import { selectContacts } from '../redux/selectors/contactsSelectors';
-
-// Import ModalAlert component for displaying modal alerts
 import ModalAlert from './ModalAlert';
-
-// Import Input and Button components from NextUI
 import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/react';
-
-// Import Plus icon from lucide-react
 import { Plus } from 'lucide-react';
 
-/**
- * Component for adding contacts.
- * @returns {JSX.Element} The JSX element representing the contact form.
- */
 const ContactForm = () => {
-  // Redux dispatch function
   const dispatch = useDispatch();
-
-  // Select contacts from Redux store
   const contacts = useSelector(selectContacts);
-
-  // State for input fields and modal
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [existingName, setExistingName] = useState(null);
   const [existingPhone, setExistingPhone] = useState(null);
 
-  /**
-   * Handles form submission to add a new contact.
-   * @param {object} event - The form submission event.
-   * @returns {void}
-   */
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -65,10 +43,8 @@ const ContactForm = () => {
     }
   };
 
-  // Function to validate phone number
   const validatePhone = phone => phone.match(/^[0-9+\-() ]*$/);
 
-  // Memoized boolean indicating whether phone number is invalid
   const isInvalid = useMemo(() => {
     if (phone === '') return false;
 
@@ -77,9 +53,7 @@ const ContactForm = () => {
 
   return (
     <>
-      {/* Contact form */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 pb-8">
-        {/* Name and phone input fields */}
         <div className="flex flex-wrap md:flex-nowrap gap-4">
           <Input
             type="text"
@@ -104,7 +78,6 @@ const ContactForm = () => {
           />
         </div>
 
-        {/* Submit button */}
         <Button
           type="submit"
           className="bg-blue-600 text-white"
@@ -114,7 +87,6 @@ const ContactForm = () => {
         </Button>
       </form>
 
-      {/* Modal alert for existing contact */}
       <ModalAlert
         isOpen={isModalOpen}
         onClose={() => {
