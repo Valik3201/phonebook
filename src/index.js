@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
@@ -10,11 +11,13 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <NextUIProvider>
-        <NextThemesProvider attribute="class" defaultTheme="dark">
-          <App />
-        </NextThemesProvider>
-      </NextUIProvider>
+      <BrowserRouter>
+        <NextUIProvider>
+          <NextThemesProvider attribute="class" defaultTheme="dark">
+            <App />
+          </NextThemesProvider>
+        </NextUIProvider>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
