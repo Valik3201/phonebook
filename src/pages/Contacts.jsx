@@ -5,6 +5,7 @@ import ContactList from '../components/ContactList';
 const Contacts = () => {
   return (
     <div className="flex flex-col gap-4">
+      <h2 className="text-4xl text-center font-semibold mb-6">Welcome 😁</h2>
       <ContactForm />
       <Filter />
       <ContactList />
