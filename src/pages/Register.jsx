@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../redux/auth/operations';
+import { Helmet } from 'react-helmet';
 import { Input, Button } from '@nextui-org/react';
 import {
   UserRoundIcon,
@@ -34,6 +35,10 @@ const Register = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Phonebook - Sign Up</title>
+      </Helmet>
+
       <h2 className="text-4xl text-center font-semibold mb-6">Sign Up</h2>
       <form
         onSubmit={handleSubmit}

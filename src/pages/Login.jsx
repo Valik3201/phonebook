@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../redux/auth/operations';
+import { Helmet } from 'react-helmet';
 import { Input, Button } from '@nextui-org/react';
 import { UserRoundIcon, EyeIcon, EyeOffIcon, KeyRoundIcon } from 'lucide-react';
 
@@ -26,6 +27,10 @@ const Login = () => {
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
     <div>
+      <Helmet>
+        <title>Phonebook - Sign In</title>
+      </Helmet>
+
       <h2 className="text-4xl text-center font-semibold mb-6">Sign In</h2>
       <form
         onSubmit={handleSubmit}
