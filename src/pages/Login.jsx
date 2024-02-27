@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { logIn } from '../redux/auth/operations';
 import { Input, Button } from '@nextui-org/react';
 import { UserRoundIcon, EyeIcon, EyeOffIcon, KeyRoundIcon } from 'lucide-react';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = React.useState(false);
 
   const handleSubmit = e => {
@@ -18,6 +20,7 @@ const Login = () => {
       })
     );
     form.reset();
+    navigate('/');
   };
 
   const toggleVisibility = () => setIsVisible(!isVisible);

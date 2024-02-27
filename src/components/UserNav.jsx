@@ -1,13 +1,20 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from '../redux/auth/operations';
 import { NavbarItem, Button } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logOut());
+    navigate('/');
+  };
 
   return (
     <NavbarItem>
-      <Button onClick={() => dispatch(logOut())} color="danger" variant="flat">
+      <Button onClick={handleLogout} color="danger" variant="flat">
         Logout
       </Button>
     </NavbarItem>
