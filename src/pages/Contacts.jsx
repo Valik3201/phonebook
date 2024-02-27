@@ -8,18 +8,23 @@ const Contacts = () => {
   const { user } = useAuth();
 
   return (
-    <div className="container mx-auto md:max-w-xl flex flex-col gap-4 p-4 md:p-8 md:pt-4">
+    <div className="container mx-auto flex flex-col gap-4 py-4 md:py-8 md:pt-4">
       <div className="flex flex-col gap-4">
         <Helmet>
           <title>Phonebook - Contacts</title>
         </Helmet>
-
-        <h2 className="text-xl font-bold leading-tight tracking-tight md:text-3xl mb-6">
-          Welcome, {user.name}
-        </h2>
-        <ContactForm />
-        <Filter />
-        <ContactList />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:w-[1024px] mx-auto lg:px-6">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-xl font-bold leading-tight tracking-tight md:text-3xl">
+              Welcome, {user.name}
+            </h2>
+            <ContactForm />
+          </div>
+          <div className="flex flex-col gap-4">
+            <Filter />
+            <ContactList />
+          </div>
+        </div>
       </div>
     </div>
   );

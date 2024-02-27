@@ -53,7 +53,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 pb-8">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-wrap md:flex-nowrap gap-4">
           <Input
             type="text"

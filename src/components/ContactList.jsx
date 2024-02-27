@@ -39,6 +39,10 @@ const ContactList = () => {
       aria-label="Contacts"
       selectionMode="single"
       defaultSelectedKeys={['2']}
+      isHeaderSticky
+      classNames={{
+        base: 'max-h-[480px] overflow-scroll',
+      }}
     >
       <TableHeader>
         <TableColumn className="w-2/5">NAME</TableColumn>
