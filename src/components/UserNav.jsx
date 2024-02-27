@@ -14,7 +14,7 @@ export const UserMenu = () => {
 
   return (
     <NavbarItem>
-      <Button onClick={handleLogout} color="danger" variant="flat">
+      <Button onClick={handleLogout} color="danger" variant="light">
         Logout
       </Button>
     </NavbarItem>

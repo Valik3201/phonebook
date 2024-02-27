@@ -26,7 +26,13 @@ const Navigation = () => {
       {isLoggedIn && (
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link href="/contacts">Contacts</Link>
+            <Link
+              href="/contacts"
+              color="foreground"
+              className="hover:text-blue-600 hover:opacity-100"
+            >
+              Contacts
+            </Link>
           </NavbarItem>
         </NavbarContent>
       )}

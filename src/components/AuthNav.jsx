@@ -1,17 +1,25 @@
-import { NavbarItem, Button, Link } from '@nextui-org/react';
+import { NavbarItem, Link } from '@nextui-org/react';
 
 export const AuthNav = () => {
   return (
     <>
       <NavbarItem>
-        <Button as={Link} href="/login" variant="flat">
+        <Link
+          href="/login"
+          color="foreground"
+          className="hover:text-blue-600 hover:opacity-100"
+        >
           Login
-        </Button>
+        </Link>
       </NavbarItem>
       <NavbarItem>
-        <Button as={Link} href="/register" variant="flat">
+        <Link
+          href="/register"
+          color="foreground"
+          className="hover:text-blue-600 hover:opacity-100"
+        >
           Sign Up
-        </Button>
+        </Link>
       </NavbarItem>
     </>
   );
