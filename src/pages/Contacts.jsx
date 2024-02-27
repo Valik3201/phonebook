@@ -8,7 +8,7 @@ const Contacts = () => {
   const { user } = useAuth();
 
   return (
-    <div className="container mx-auto flex flex-col gap-4 py-4 md:py-8 md:pt-4 mb-24 sm:mb-0">
+    <div className="container mx-auto flex flex-col gap-4 py-4 md:py-8 md:pt-4 mb-24 sm:mb-0 px-6 md:px-0">
       <div className="flex flex-col gap-4">
         <Helmet>
           <title>Phonebook - Contacts</title>

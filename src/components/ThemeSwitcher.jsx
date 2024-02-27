@@ -22,6 +22,7 @@ export function ThemeSwitcher() {
       color="#005BC4"
       startContent={<SunIcon />}
       endContent={<MoonIcon />}
+      className="*:mr-0"
     />
   );
 }
