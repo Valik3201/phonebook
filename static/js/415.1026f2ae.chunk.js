@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[415],{5415:function(e,t,n){n.r(t);var o=n(3329);t.default=function(){return(0,o.jsx)("div",{children:(0,o.jsx)("h2",{className:"text-4xl text-center font-semibold mb-6",children:"Manage yor contacts \u260e\ufe0f"})})}}}]);
+//# sourceMappingURL=415.1026f2ae.chunk.js.map
