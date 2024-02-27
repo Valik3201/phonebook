@@ -5,7 +5,7 @@ import Home from 'pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Contacts from '../pages/Contacts';
-import Navigation from './Navigation';
+import Layout from './Layout';
 
 function App() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function App() {
     <NextUIProvider navigate={navigate}>
       <NextThemesProvider attribute="class" defaultTheme="dark">
         <Routes>
-          <Route path="/" element={<Navigation />}>
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
