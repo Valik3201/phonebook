@@ -51,7 +51,7 @@ const contactsSlice = createSlice({
       }
     });
 
-    // Handle successful fulfillment of logOut action
+    // Handle successful fulfilled of logOut action
     builder.addCase(logOut.fulfilled, state => {
       state.items = [];
       state.error = null;

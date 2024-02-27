@@ -72,7 +72,7 @@ const ContactList = () => {
           sortedContacts.map(contact => (
             <TableRow key={contact.id}>
               <TableCell>{contact.name}</TableCell>
-              <TableCell>{contact.phone}</TableCell>
+              <TableCell>{contact.number}</TableCell>
               <TableCell className="text-center">
                 <Button
                   color="danger"

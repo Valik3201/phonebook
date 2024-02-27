@@ -11,45 +11,45 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [existingName, setExistingName] = useState(null);
-  const [existingPhone, setExistingPhone] = useState(null);
+  const [existingNumber, setExistingNumber] = useState(null);
+
+  const validatePhone = phone => phone.match(/^[0-9+\-() ]*$/);
+
+  const isInvalid = useMemo(() => {
+    if (number === '') return false;
+
+    return validatePhone(number) ? false : true;
+  }, [number]);
 
   const handleSubmit = event => {
     event.preventDefault();
 
     const existingContact = contacts.find(
-      contact => contact.name === name || contact.phone === phone
+      contact => contact.name === name || contact.number === number
     );
 
     if (!existingContact && !isInvalid) {
       setName('');
-      setPhone('');
+      setNumber('');
 
-      dispatch(addContact({ name, phone }));
+      dispatch(addContact({ name, number }));
     } else {
-      if (existingContact.name === name && existingContact.phone === phone) {
+      if (existingContact.name === name && existingContact.number === number) {
         setExistingName(name);
-        setExistingPhone(phone);
+        setExistingNumber(number);
         setIsModalOpen(true);
       } else if (existingContact.name === name) {
         setExistingName(name);
         setIsModalOpen(true);
-      } else if (existingContact.phone === phone) {
-        setExistingPhone(phone);
+      } else if (existingContact.number === number) {
+        setExistingNumber(number);
         setIsModalOpen(true);
       }
     }
   };
-
-  const validatePhone = phone => phone.match(/^[0-9+\-() ]*$/);
-
-  const isInvalid = useMemo(() => {
-    if (phone === '') return false;
-
-    return validatePhone(phone) ? false : true;
-  }, [phone]);
 
   return (
     <>
@@ -67,8 +67,8 @@ const ContactForm = () => {
           <Input
             type="tel"
             label="Phone"
-            value={phone}
-            onChange={e => setPhone(e.target.value)}
+            value={number}
+            onChange={e => setNumber(e.target.value)}
             variant="bordered"
             isRequired
             isInvalid={isInvalid}
@@ -92,10 +92,10 @@ const ContactForm = () => {
         onClose={() => {
           setIsModalOpen(false);
           setExistingName(null);
-          setExistingPhone(null);
+          setExistingNumber(null);
         }}
         existingName={existingName}
-        existingPhone={existingPhone}
+        existingNumber={existingNumber}
       />
     </>
   );

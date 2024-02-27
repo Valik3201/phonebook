@@ -52,7 +52,7 @@ export const updateContact = createAsyncThunk(
 
   async (contactId, thunkAPI) => {
     try {
-      const response = await axios.update(`/contacts/${contactId}`);
+      const response = await axios.patch(`/contacts/${contactId}`);
 
       return response.data;
     } catch (e) {
