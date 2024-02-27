@@ -1,9 +1,11 @@
-import { NavbarItem, Link } from '@nextui-org/react';
+import { NavbarItem, NavbarMenuItem, Link } from '@nextui-org/react';
 
-export const AuthNav = () => {
+export const AuthNav = ({ as }) => {
+  const NavComponent = as === 'NavbarMenuItem' ? NavbarMenuItem : NavbarItem;
+
   return (
     <>
-      <NavbarItem>
+      <NavComponent>
         <Link
           href="/login"
           color="foreground"
@@ -11,8 +13,8 @@ export const AuthNav = () => {
         >
           Login
         </Link>
-      </NavbarItem>
-      <NavbarItem>
+      </NavComponent>
+      <NavComponent>
         <Link
           href="/register"
           color="foreground"
@@ -20,7 +22,7 @@ export const AuthNav = () => {
         >
           Sign Up
         </Link>
-      </NavbarItem>
+      </NavComponent>
     </>
   );
 };

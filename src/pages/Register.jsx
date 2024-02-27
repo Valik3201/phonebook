@@ -36,7 +36,7 @@ const Register = () => {
         <title>Phonebook - Sign Up</title>
       </Helmet>
 
-      <div className="flex flex-col items-center justify-center md:mt-16">
+      <div className="max-w-lg mx-auto mt-8 md:mt-16">
         <div className="rounded-lg shadow dark:border md:mt-0 w-4/5 mx-auto xl:p-0 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h2 className="text-xl font-bold leading-tight tracking-tight md:text-3xl mb-6">

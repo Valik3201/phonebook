@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from '../redux/auth/operations';
-import { NavbarItem, Button } from '@nextui-org/react';
+import { NavbarItem, NavbarMenuItem, Link } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 
-export const UserMenu = () => {
+export const UserMenu = ({ as }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const NavComponent = as === 'NavbarMenuItem' ? NavbarMenuItem : NavbarItem;
 
   const handleLogout = () => {
     dispatch(logOut());
@@ -13,10 +14,15 @@ export const UserMenu = () => {
   };
 
   return (
-    <NavbarItem>
-      <Button onClick={handleLogout} color="danger" variant="light">
+    <NavComponent>
+      <Link
+        onClick={handleLogout}
+        color="danger"
+        variant="light"
+        className="cursor-pointer"
+      >
         Logout
-      </Button>
-    </NavbarItem>
+      </Link>
+    </NavComponent>
   );
 };
