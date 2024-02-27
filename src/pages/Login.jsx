@@ -1,18 +1,29 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { logIn } from '../redux/auth/operations';
+import { useAuth } from 'hooks';
 import { Helmet } from 'react-helmet-async';
 import { Input, Button } from '@nextui-org/react';
 import { UserRoundIcon, EyeIcon, EyeOffIcon, KeyRoundIcon } from 'lucide-react';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { error } = useAuth();
   const [isVisible, setIsVisible] = React.useState(false);
+  const [value, setValue] = React.useState('');
+
+  const validateEmail = value =>
+    value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+
+  const isInvalid = React.useMemo(() => {
+    if (value === '') return false;
+
+    return validateEmail(value) ? false : true;
+  }, [value]);
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const form = e.currentTarget;
     dispatch(
       logIn({
@@ -20,8 +31,8 @@ const Login = () => {
         password: form.elements.password.value,
       })
     );
+
     form.reset();
-    navigate('/');
   };
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -43,6 +54,11 @@ const Login = () => {
           name="email"
           label="Email"
           placeholder="Enter your email"
+          value={value}
+          isInvalid={isInvalid}
+          color={isInvalid ? 'danger' : 'default'}
+          errorMessage={isInvalid && 'Please enter a valid email'}
+          onValueChange={setValue}
           labelPlacement="outside"
           variant="bordered"
           radius="sm"
@@ -78,6 +94,12 @@ const Login = () => {
         <Button type="submit" color="primary">
           Sign In
         </Button>
+
+        {error && (
+          <div className="text-danger">
+            Incorrect email or password. Please try again.
+          </div>
+        )}
       </form>
     </div>
   );
