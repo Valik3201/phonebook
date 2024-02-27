@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../redux/operations/operations';
-import { selectContacts } from '../redux/selectors/contactsSelectors';
+import { addContact } from '../redux/contacts/operations';
+import { selectContacts } from '../redux/contacts/selectors';
 import ModalAlert from './ModalAlert';
 import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/react';

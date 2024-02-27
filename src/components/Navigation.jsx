@@ -18,7 +18,7 @@ const Navigation = () => {
     <>
       <Navbar isBordered>
         <NavbarBrand>
-          <Link href="/">
+          <Link href="/" color="foreground">
             <Logo />
           </Link>
         </NavbarBrand>

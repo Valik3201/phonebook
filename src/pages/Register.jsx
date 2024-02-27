@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from '../redux/auth/operations';
 import { Input, Button } from '@nextui-org/react';
 import {
   UserRoundIcon,
@@ -9,15 +11,34 @@ import {
 } from 'lucide-react';
 
 const Register = () => {
+  const dispatch = useDispatch();
   const [isVisible, setIsVisible] = React.useState(false);
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
+
   const toggleVisibility = () => setIsVisible(!isVisible);
+
   return (
     <div>
       <h2 className="text-4xl text-center font-semibold mb-6">Sign Up</h2>
-      <form className="flex flex-col gap-6">
+      <form
+        onSubmit={handleSubmit}
+        autoComplete="off"
+        className="flex flex-col gap-6"
+      >
         <Input
-          type="text"
+          name="name"
           label="Username"
           placeholder="Enter your username"
           labelPlacement="outside"
@@ -29,6 +50,7 @@ const Register = () => {
         />
         <Input
           type="email"
+          name="email"
           label="Email"
           placeholder="Enter your email"
           labelPlacement="outside"
@@ -40,6 +62,7 @@ const Register = () => {
         />
         <Input
           label="Password"
+          name="password"
           placeholder="Enter your password"
           labelPlacement="outside"
           variant="bordered"

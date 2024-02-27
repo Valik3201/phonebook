@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact, fetchContacts } from '../redux/operations/operations';
+import { deleteContact, fetchContacts } from '../redux/contacts/operations';
 import {
   selectVisibleContacts,
   selectIsLoading,
   selectError,
-} from '../redux/selectors/contactsSelectors';
+} from '../redux/contacts/selectors';
 import {
   Table,
   TableHeader,

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from '../redux/reducers/filterSlice';
-import { selectFilter } from '../redux/selectors/contactsSelectors';
+import { setFilter } from '../redux/contacts/filterSlice';
+import { selectFilter } from '../redux/contacts/selectors';
 import { Input } from '@nextui-org/react';
 import { Search } from 'lucide-react';
 

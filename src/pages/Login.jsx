@@ -1,17 +1,37 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../redux/auth/operations';
 import { Input, Button } from '@nextui-org/react';
 import { UserRoundIcon, EyeIcon, EyeOffIcon, KeyRoundIcon } from 'lucide-react';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [isVisible, setIsVisible] = React.useState(false);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      logIn({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
 
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
     <div>
       <h2 className="text-4xl text-center font-semibold mb-6">Sign In</h2>
-      <form className="flex flex-col gap-6">
+      <form
+        onSubmit={handleSubmit}
+        autoComplete="off"
+        className="flex flex-col gap-6"
+      >
         <Input
           type="email"
+          name="email"
           label="Email"
           placeholder="Enter your email"
           labelPlacement="outside"
@@ -23,6 +43,7 @@ const Login = () => {
         />
         <Input
           label="Password"
+          name="password"
           placeholder="Enter your password"
           labelPlacement="outside"
           variant="bordered"

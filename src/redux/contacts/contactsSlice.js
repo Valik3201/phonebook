@@ -1,24 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import {
-  fetchContacts,
-  addContact,
-  deleteContact,
-} from '../operations/operations';
+import { logOut } from '../auth/operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const initialState = {
   items: [],
-
   isLoading: false,
-
   error: null,
 };
 
 const contactsSlice = createSlice({
   name: 'contacts',
-
   initialState,
-
   extraReducers: builder => {
     // Handle pending state for fetchContacts, addContact, and deleteContact actions
     builder
@@ -59,6 +51,13 @@ const contactsSlice = createSlice({
       }
     });
 
+    // Handle successful fulfillment of logOut action
+    builder.addCase(logOut.fulfilled, state => {
+      state.items = [];
+      state.error = null;
+      state.isLoading = false;
+    });
+
     // Handle rejected state for fetchContacts, addContact, and deleteContact actions
     builder
       .addCase(fetchContacts.rejected, (state, action) => {
@@ -76,4 +75,6 @@ const contactsSlice = createSlice({
   },
 });
 
-export const contactsReducer = contactsSlice.reducer;
+const contactsReducer = contactsSlice.reducer;
+
+export default contactsReducer;
