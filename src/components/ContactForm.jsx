@@ -2,19 +2,25 @@ import { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../redux/contacts/operations';
 import { selectContacts } from '../redux/contacts/selectors';
-import ModalAlert from './ModalAlert';
-import { Input } from '@nextui-org/react';
-import { Button } from '@nextui-org/react';
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+  Input,
+} from '@nextui-org/react';
 import { Plus } from 'lucide-react';
 
-const ContactForm = () => {
+export default function Form() {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [existingName, setExistingName] = useState(null);
-  const [existingNumber, setExistingNumber] = useState(null);
+  const [message, setMessage] = useState('');
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const validatePhone = phone => phone.match(/^[0-9+\-() ]*$/);
 
@@ -26,79 +32,90 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
     const existingContact = contacts.find(
       contact => contact.name === name || contact.number === number
     );
 
     if (!existingContact && !isInvalid) {
+      dispatch(addContact({ name, number }));
       setName('');
       setNumber('');
-
-      dispatch(addContact({ name, number }));
+      onOpenChange(false);
     } else {
-      if (existingContact.name === name && existingContact.number === number) {
-        setExistingName(name);
-        setExistingNumber(number);
-        setIsModalOpen(true);
-      } else if (existingContact.name === name) {
-        setExistingName(name);
-        setIsModalOpen(true);
-      } else if (existingContact.number === number) {
-        setExistingNumber(number);
-        setIsModalOpen(true);
+      if (
+        existingContact &&
+        existingContact.name === name &&
+        existingContact.number === number
+      ) {
+        setMessage(
+          `Contact with name ${name} and phone ${number} already exists!`
+        );
+      } else if (existingContact && existingContact.name === name) {
+        setMessage(`Contact with name ${name} already exists!`);
+      } else if (existingContact && existingContact.number === number) {
+        setMessage(`Contact with phone ${number} already exists!`);
       }
     }
   };
 
+  const closeModal = () => {
+    onOpenChange(false);
+    setName('');
+    setNumber('');
+    setMessage('');
+  };
+
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className="flex flex-wrap md:flex-nowrap gap-4">
-          <Input
-            type="text"
-            label="Name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            variant="bordered"
-            isRequired
-            size="sm"
-          />
-          <Input
-            type="tel"
-            label="Phone"
-            value={number}
-            onChange={e => setNumber(e.target.value)}
-            variant="bordered"
-            isRequired
-            isInvalid={isInvalid}
-            errorMessage={isInvalid && 'Please enter a valid phone number'}
-            color={isInvalid && 'danger'}
-            size="sm"
-          />
-        </div>
+      <Button
+        onPress={onOpen}
+        className="bg-blue-600 text-white w-full"
+        endContent={<Plus className="w-5 h-5" />}
+      >
+        Add Contact
+      </Button>
 
-        <Button
-          type="submit"
-          className="bg-blue-600 text-white"
-          endContent={<Plus className="w-5 h-5" />}
-        >
-          Add Contact
-        </Button>
-      </form>
-
-      <ModalAlert
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-          setExistingName(null);
-          setExistingNumber(null);
-        }}
-        existingName={existingName}
-        existingNumber={existingNumber}
-      />
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
+        <ModalContent>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <ModalHeader className="flex flex-col gap-1">
+              Add Contact
+            </ModalHeader>
+            <ModalBody>
+              <Input
+                type="text"
+                label="Name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                variant="bordered"
+                isRequired
+                size="sm"
+              />
+              <Input
+                type="tel"
+                label="Phone"
+                value={number}
+                onChange={e => setNumber(e.target.value)}
+                variant="bordered"
+                isRequired
+                isInvalid={isInvalid}
+                errorMessage={isInvalid && 'Please enter a valid phone number'}
+                color={isInvalid && 'danger'}
+                size="sm"
+              />
+              {message && <div className="text-sm text-danger">{message}</div>}
+            </ModalBody>
+            <ModalFooter>
+              <Button color="danger" variant="flat" onClick={closeModal}>
+                Close
+              </Button>
+              <Button type="submit" color="primary">
+                Add Contact
+              </Button>
+            </ModalFooter>
+          </form>
+        </ModalContent>
+      </Modal>
     </>
   );
-};
-
-export default ContactForm;
+}
