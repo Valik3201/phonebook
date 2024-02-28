@@ -1,7 +1,7 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { NextUIProvider } from '@nextui-org/react';
+import { NextUIProvider, Spinner } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { refreshUser } from '../redux/auth/operations';
 import { useAuth } from 'hooks';
@@ -24,7 +24,12 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Spinner
+      label="Refreshing user..."
+      color="default"
+      labelColor="foreground"
+      className="h-screen flex items-center justify-center"
+    />
   ) : (
     <NextUIProvider navigate={navigate}>
       <NextThemesProvider attribute="class" defaultTheme="dark">
