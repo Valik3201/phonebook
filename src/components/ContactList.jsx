@@ -25,7 +25,7 @@ import {
   useDisclosure,
   Input,
 } from '@nextui-org/react';
-import { Trash2 } from 'lucide-react';
+import { Trash2Icon, PencilIcon } from 'lucide-react';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -101,16 +101,16 @@ const ContactList = () => {
                     variant="light"
                     size="sm"
                     onClick={() => handleEdit(contact)}
-                  >
-                    Edit
-                  </Button>
-
+                    isIconOnly
+                    startContent={<PencilIcon className="w-4 h-4" />}
+                  />
                   <Button
                     color="danger"
                     variant="light"
-                    isIconOnly
+                    size="sm"
                     onClick={() => handleDelete(contact.id)}
-                    startContent={<Trash2 className="w-4 h-4" />}
+                    isIconOnly
+                    startContent={<Trash2Icon className="w-4 h-4" />}
                   />
                 </TableCell>
               </TableRow>
