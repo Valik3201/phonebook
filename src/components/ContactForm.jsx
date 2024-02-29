@@ -96,7 +96,12 @@ const Form = ({ isOpen, onOpenChange, editingContact }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
+    <Modal
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
+      placement="top-center"
+      hideCloseButton
+    >
       <ModalContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <ModalHeader className="flex flex-col gap-1">

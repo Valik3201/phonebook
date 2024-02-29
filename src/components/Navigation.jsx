@@ -21,7 +21,7 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <Navbar isBordered onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarMenuToggle
         aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         className="sm:hidden"
