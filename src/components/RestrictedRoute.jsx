@@ -11,11 +11,11 @@ const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
 
   const isAuthenticated = isLoggedIn && !error;
 
-  return isAuthenticated ? <Navigate to={redirectTo} /> : <Component />;
+  return isAuthenticated ? <Navigate to={redirectTo} /> : Component;
 };
 
 RestrictedRoute.propTypes = {
-  component: PropTypes.elementType.isRequired,
+  component: PropTypes.element,
   redirectTo: PropTypes.string,
 };
 

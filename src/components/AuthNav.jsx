@@ -29,5 +29,5 @@ export const AuthNav = ({ as }) => {
 };
 
 AuthNav.propTypes = {
-  as: PropTypes.oneOf(['NavbarItem', 'NavbarMenuItem']).isRequired,
+  as: PropTypes.oneOf(['NavbarItem', 'NavbarMenuItem']),
 };
