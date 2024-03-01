@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../redux/auth/operations';
 import { NavbarItem, NavbarMenuItem, Link } from '@nextui-org/react';
@@ -26,3 +27,9 @@ export const UserMenu = ({ as }) => {
     </NavComponent>
   );
 };
+
+UserMenu.propTypes = {
+  as: PropTypes.oneOf(['NavbarItem', 'NavbarMenuItem']),
+};
+
+export default UserMenu;

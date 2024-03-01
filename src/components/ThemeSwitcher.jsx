@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Switch } from '@nextui-org/react';
 import { SunIcon, MoonIcon } from 'lucide-react';
 
-export function ThemeSwitcher() {
+export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -25,4 +25,4 @@ export function ThemeSwitcher() {
       className="*:mr-0"
     />
   );
-}
+};

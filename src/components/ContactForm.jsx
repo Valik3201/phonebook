@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, updateContact } from '../redux/contacts/operations';
 import { selectContacts } from '../redux/contacts/selectors';
@@ -143,6 +144,12 @@ const Form = ({ isOpen, onOpenChange, editingContact }) => {
       </ModalContent>
     </Modal>
   );
+};
+
+Form.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onOpenChange: PropTypes.func.isRequired,
+  editingContact: PropTypes.object,
 };
 
 export default Form;

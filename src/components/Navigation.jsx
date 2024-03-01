@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth } from 'hooks';
 import { AuthNav } from './AuthNav';
 import { UserMenu } from './UserNav';
+import { ThemeSwitcher } from './ThemeSwitcher';
 import {
   Navbar,
   NavbarBrand,
@@ -13,8 +14,6 @@ import {
   Link,
 } from '@nextui-org/react';
 import Logo from './Logo';
-
-const { ThemeSwitcher } = require('./ThemeSwitcher');
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();

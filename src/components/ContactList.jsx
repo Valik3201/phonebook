@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, fetchContacts } from '../redux/contacts/operations';
 import {
@@ -102,6 +103,11 @@ const ContactList = ({ onOpen, onEditContact }) => {
       </TableBody>
     </Table>
   );
+};
+
+ContactList.propTypes = {
+  onOpen: PropTypes.func.isRequired,
+  onEditContact: PropTypes.func.isRequired,
 };
 
 export default ContactList;

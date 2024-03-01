@@ -5,8 +5,8 @@ import { NextUIProvider, Spinner } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { refreshUser } from '../redux/auth/operations';
 import { useAuth } from 'hooks';
-import { PrivateRoute } from './PrivateRout';
-import { RestrictedRoute } from './RestrictedRoute';
+import PrivateRoute from './PrivateRout';
+import RestrictedRoute from './RestrictedRoute';
 import Layout from './Layout';
 
 const Home = lazy(() => import('../pages/Home'));

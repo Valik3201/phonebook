@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { NavbarItem, NavbarMenuItem, Link } from '@nextui-org/react';
 
 export const AuthNav = ({ as }) => {
@@ -25,4 +26,8 @@ export const AuthNav = ({ as }) => {
       </NavComponent>
     </>
   );
+};
+
+AuthNav.propTypes = {
+  as: PropTypes.oneOf(['NavbarItem', 'NavbarMenuItem']).isRequired,
 };
