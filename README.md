@@ -1,22 +1,62 @@
 # Phonebook
 
-This is a simple contacts management application built with React, Redux, and NextUI. The application allows users to manage their contacts by adding, deleting, and filtering them. Backend simulation is achieved using [`mockapi.io`](https://mockapi.io/). Styling is implemented using the Next UI component library and the Tailwind CSS framework.
+This is a web application for managing contacts. It allows users to register,
+log in securely, and manage their contacts. The application provides features
+for user authentication, CRUD operations for contacts, and state management
+using Redux Toolkit.
+
+[![screenshot](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-1.png)](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-1.png)
 
 ## Features
 
-- Add new contacts: Users can add a new contact by providing their name and phone number.
-- Delete contacts: Users can remove existing contacts from the phonebook.
-- Filter contacts: Users can filter contacts by name to quickly find the desired contact.
-- Theme Switcher: Toggle between light and dark themes for a personalized experience.
+- User authentication: Users can register and log in securely.
+- Contact management: Users can perform CRUD operations on their contacts,
+  including adding, updating, and deleting contacts.
+- Filter: Contacts can be filtered based on name or number to quickly find
+  specific contacts.
+- Responsive design: The application is designed to work on various screen
+  sizes, providing a seamless experience across devices.
+- Theme Switcher: Toggle between light and dark themes for a personalized
+  experience.
+
+[![screenshot](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-2.png)](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-2.png)
 
 ## Technologies Used
 
-- React: JavaScript library for building user interfaces.
-- Redux: State management library for managing application state.
-- Redux Toolkit: Official Redux package for efficient Redux development.
-- mockapi.io: Platform for simulating a REST API backend for development and testing purposes.
+- React: A JavaScript library for building user interfaces.
+- Redux Toolkit: A set of tools for efficient Redux development, including
+  simplified state management and handling side effects.
+- Redux Persist: Middleware for persisting Redux state to storage.
+- Redux Persist Storage: Storage engine for Redux Persist, used for storing
+  authentication tokens.
+- Axios: A promise-based HTTP client for making requests to the server.
+- JWT (JSON Web Tokens): Used for user authentication and authorization.
 - Next UI: Component library for building user interfaces.
 - Tailwind CSS: Utility-first CSS framework for styling applications.
+- Lucide React: A library of SVG icons for use in React applications.
+
+[![screenshot](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-3.png)](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-3.png)
+
+## Usage
+
+To use the Phonebook, follow these steps:
+
+1. Visit the deployed application
+   [here](https://valik3201.github.io/goit-react-hw-08-phonebook/) .
+2. If you are a new user, click on the "Sign Up" link to create a new account.
+   Otherwise, click on the "Login" link to sign in with your existing
+   credentials.
+3. Once logged in, you will be directed to the Contacts page.
+4. On the Contacts page, you can:
+   - Add a new contact by clicking the "Add Contact" button.
+   - Edit an existing contact by clicking the edit icon next to the contact's
+     details.
+   - Delete a contact by clicking the delete icon next to the contact's details.
+   - Search for contacts using the search bar.
+
+Enjoy managing your contacts with ease!
+
+[![screenshot](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-4.png)](https://github.com/Valik3201/goit-react-hw-08-phonebook/blob/main/assets/screenshot-4.png)
 
 ## Getting Started
 
@@ -26,25 +66,17 @@ To run the application locally, follow these steps:
    ```
    git clone <repository-url>
    ```
-3. Install dependencies:
+2. Install dependencies:
    ```
    npm install
    ```
-5. Run the development server:
+3. Run the development server:
    ```
    npm run start
    ```
-7. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Usage
-
-Once the application is running, you can perform the following actions:
-
-- **Add a contact**: Enter the name and phone number of the contact in the input fields. Then click the "Add" button to save the contact.
-- **Delete a contact**: Click the "Delete" button next to the contact you want to remove from the phonebook.
-- **Filter contacts**: Enter the name or phone of the contact you want to filter in the search input field. The contact list will be filtered in real-time as you type.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Contributing
 
-Contributions are welcome! If you have any suggestions or found a bug, please open an issue or submit a pull request.
-
+Contributions are welcome! If you have any suggestions or found a bug, please
+open an issue or submit a pull request.
