@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import ContactForm from '../components/ContactForm';
 import Filter from '../components/Filter';
 import ContactList from '../components/ContactList';
-import { useState } from 'react';
-import { Button, useDisclosure } from '@nextui-org/react';
 import Info from 'components/Info';
+import { Button, useDisclosure } from '@nextui-org/react';
 import { Plus } from 'lucide-react';
 
 const Contacts = () => {

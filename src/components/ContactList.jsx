@@ -18,7 +18,7 @@ import {
 } from '@nextui-org/react';
 import { Trash2Icon, PencilIcon } from 'lucide-react';
 
-const ContactList = ({ onOpen, onEditContact, editingContact }) => {
+const ContactList = ({ onOpen, onEditContact }) => {
   const dispatch = useDispatch();
   const items = useSelector(selectVisibleContacts);
   const isLoading = useSelector(selectIsLoading);
