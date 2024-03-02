@@ -27,7 +27,9 @@ const Navigation = () => {
       />
 
       <NavbarBrand>
-        <Logo />
+        <Link href="/" color="foreground">
+          <Logo />
+        </Link>
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
