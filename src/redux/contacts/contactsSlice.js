@@ -13,40 +13,37 @@ const initialState = {
   error: null,
 };
 
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleError = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   extraReducers: builder => {
-    // Handle pending state for fetchContacts, addContact, and deleteContact actions
     builder
-      .addCase(fetchContacts.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(addContact.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(deleteContact.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(updateContact.pending, state => {
-        state.isLoading = true;
-      });
+      .addCase(fetchContacts.pending, handlePending)
+      .addCase(addContact.pending, handlePending)
+      .addCase(deleteContact.pending, handlePending)
+      .addCase(updateContact.pending, handlePending);
 
-    // Handle successful fulfillment of fetchContacts action
     builder.addCase(fetchContacts.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     });
 
-    // Handle successful fulfillment of addContact action
     builder.addCase(addContact.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
       state.items.push(action.payload);
     });
 
-    // Handle successful fulfillment of deleteContact action
     builder.addCase(deleteContact.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
@@ -59,7 +56,6 @@ const contactsSlice = createSlice({
       }
     });
 
-    // Handle successful fulfillment of updateContact action
     builder.addCase(updateContact.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
@@ -72,31 +68,17 @@ const contactsSlice = createSlice({
       }
     });
 
-    // Handle successful fulfilled of logOut action
     builder.addCase(logOut.fulfilled, state => {
       state.items = [];
       state.error = null;
       state.isLoading = false;
     });
 
-    // Handle rejected state for fetchContacts, addContact, and deleteContact actions
     builder
-      .addCase(fetchContacts.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(addContact.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(deleteContact.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(updateContact.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(fetchContacts.rejected, handleError)
+      .addCase(addContact.rejected, handleError)
+      .addCase(deleteContact.rejected, handleError)
+      .addCase(updateContact.rejected, handleError);
   },
 });
 
