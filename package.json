@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook",
+  "name": "phonebook",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://valik3201.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://valik3201.github.io/phonebook/",
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "@reduxjs/toolkit": "^2.2.1",
